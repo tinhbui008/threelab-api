@@ -1,0 +1,15 @@
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\bin\Debug\net8.0\Threelab.Domain.deps.json
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\bin\Debug\net8.0\Threelab.Domain.runtimeconfig.json
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\bin\Debug\net8.0\Threelab.Domain.dll
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\bin\Debug\net8.0\Threelab.Domain.pdb
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\obj\Debug\net8.0\Threelab.Domain.csproj.AssemblyReference.cache
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\obj\Debug\net8.0\Threelab.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\obj\Debug\net8.0\Threelab.Domain.AssemblyInfoInputs.cache
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\obj\Debug\net8.0\Threelab.Domain.AssemblyInfo.cs
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\obj\Debug\net8.0\Threelab.Domain.csproj.CoreCompileInputs.cache
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\obj\Debug\net8.0\Threelab.Domain.sourcelink.json
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\obj\Debug\net8.0\Threelab.Domain.dll
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\obj\Debug\net8.0\refint\Threelab.Domain.dll
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\obj\Debug\net8.0\Threelab.Domain.pdb
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\obj\Debug\net8.0\Threelab.Domain.genruntimeconfig.cache
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Domain\obj\Debug\net8.0\ref\Threelab.Domain.dll

@@ -14,8 +14,7 @@ namespace Threelab.Infrastructure.Context
         {
 
         }
-
-
         public DbSet<User> Users { get; set; }
+        public DbSet<ApiKey> ApiKeys { get; set; }
     }
 }

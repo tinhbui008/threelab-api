@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Threelab.Domain\Threelab.Domain.csproj" />
+    <ProjectReference Include="..\Threelab.Infrastructure\Threelab.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Threelab.Domain.Abstracts;
+using Threelab.Domain.Entities;
+using Threelab.Domain.Interfaces.Services;
+using Threelab.Domain.Models.Error;
+using Threelab.Service.Services;
 
 namespace Threelab.API.User.Controllers
 {
@@ -12,22 +17,35 @@ namespace Threelab.API.User.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IApiKey _apiKeyService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IApiKey apiKeyService)
         {
             _logger = logger;
+            _apiKeyService = apiKeyService;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public ResultObject Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var data = Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+
+            return new SuccessResult<object>(data, (int)HttpStatusCodes.OK);
+            //return Ok(new FailedResult("ERRORRRR", (int)HttpStatusCodes.CONFLICT));
+        }
+
+        [HttpPost(Name = "CreateApiKey")]
+        public async Task<ResultObject> Post(ApiKey apiKey)
+        {
+            await _apiKeyService.GenerateKey();
+            return new SuccessResult<object>(apiKey, (int)HttpStatusCodes.OK);
+            //return Ok(new FailedResult("ERRORRRR", (int)HttpStatusCodes.CONFLICT));
         }
     }
 }
