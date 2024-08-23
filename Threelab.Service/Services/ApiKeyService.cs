@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using Microsoft.AspNetCore.Http;
+using System.Security.Cryptography;
 using Threelab.Domain.Abstracts;
 using Threelab.Domain.Entities;
 using Threelab.Domain.Interfaces;
@@ -32,9 +33,10 @@ namespace Threelab.Service.Services
             return new SuccessResult<ApiKey>(apiKey, statusCode: (int)HttpStatusCodes.OK);
         }
 
-        public Task<ResultObject> Get(string key)
+        public async Task<ResultObject> GetOne(string key)
         {
-            throw new NotImplementedException();
+            var result = await _unitOfWork.Repository<ApiKey>().FindAsync(key);
+            return new SuccessResult<ApiKey>(result, (int)HttpStatusCodes.OK);
         }
 
         //public async Task<SuccessResult<ApiKey>> Add(ApiKey apiKey)
