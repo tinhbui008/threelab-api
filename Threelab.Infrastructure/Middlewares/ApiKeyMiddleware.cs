@@ -1,8 +1,9 @@
-using Azure;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Text.Json;
 using Threelab.Domain.Abstracts;
+using Threelab.Domain.Entities;
+using Threelab.Domain.Interfaces;
 using Threelab.Domain.Interfaces.Services;
 using Threelab.Domain.Models.Error;
 
@@ -12,12 +13,12 @@ namespace Threelab.Infrastructure.Middlewares
     {
         private const string APIKEY = "x-api-key";
         private readonly RequestDelegate _next;
-        private readonly IApiKey _apiKeyService;
+        private readonly IApiKey _apiKey;
 
-        public ApiKeyMiddleware(RequestDelegate next, IApiKey apiKeyService)
+        public ApiKeyMiddleware(RequestDelegate next, IApiKey apiKey)
         {
             _next = next;
-            _apiKeyService = apiKeyService;
+            _apiKey = apiKey;
         }
 
         public async Task Invoke(HttpContext httpContext)
@@ -28,8 +29,6 @@ namespace Threelab.Infrastructure.Middlewares
                 var errObj = new FailedResult("API key null!!!", (int)HttpStatusCodes.UNAUTHORIZED);
                 await HandleExceptionAsync(httpContext, errObj);
             }
-
-            //var apiKey = _apiKeyService.GetOne(extractedApiKey);
 
             await _next(httpContext);
         }

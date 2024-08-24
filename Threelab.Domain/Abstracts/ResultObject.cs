@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Threelab.Domain.Abstracts
 {
-    public abstract class ResultObject
+    public abstract class ResultObject : Exception
     {
         public bool IsError { get; set; } = false;
         public string Message { get; set; }

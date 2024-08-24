@@ -1,13 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.EntityFrameworkCore;
-using Threelab.Domain.Entities;
-using Threelab.Domain.Interfaces;
-using Threelab.Domain.Interfaces.Services;
-using Threelab.Domain.Models;
-using Threelab.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
 using Threelab.Infrastructure.Context;
-using Threelab.Infrastructure.Middlewares;
-using Threelab.Service.Services;
 
 namespace Threelab.API.User.Extensions
 {
@@ -15,6 +7,8 @@ namespace Threelab.API.User.Extensions
     {
         public static IServiceCollection AddDatabase(this IServiceCollection services, WebApplicationBuilder builder)
         {
+            services.AddControllers();
+            services.AddEndpointsApiExplorer();
             services.AddDbContext<DBContext>(options =>
             {
                 options.UseNpgsql(builder.Configuration.GetConnectionString("AccountConnection"),
@@ -22,47 +16,36 @@ namespace Threelab.API.User.Extensions
                 options.UseLazyLoadingProxies();
             });
 
-            services.AddScoped<Func<DBContext>>((provider) => () => provider.GetService<DBContext>());
-            services.AddScoped<DbFactory>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IUser, UserService>();
-            services.AddScoped<IApiKey, ApiKeyService>();
+            //services.AddTransient<Func<DBContext>>((provider) => () => provider.GetService<DBContext>());
+            //services.AddTransient<DbFactory>();
+            //services.AddTransient<IUnitOfWork, UnitOfWork>();
             return services;
         }
 
-
-        /// <summary>ap
-        /// Add instances of in-use services
-        /// </summary>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        //public static IServiceCollection AddServices(this IServiceCollection services)
-        //{
-        //return services.AddScoped<IWorkService, WorkService>();
-        //return services.AddScoped<IUser, UserService>();
-        //return services.AddScoped<IApiKey, ApiKeyService>();
-        //}
-
+        public static IServiceCollection AddServices(this IServiceCollection services)
+        {
+            services.AddAuthorization();
+            //services.AddTransient<IUser, UserService>();
+            //services.AddTransient<IApiKey, ApiKeyService>();
+            return services;
+        }
 
         public static async void ConfigApp(WebApplication app)
         {
             //app.UseMiddleware<ApiKeyMiddleware>();
-
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
             }
-
-            app.UseSwagger();
-            app.UseSwaggerUI();
-
-            app.UseHttpsRedirection();
-
+            app.UseAuthentication();
+            app.UseRouting();
             app.UseAuthorization();
-
+            app.UseHttpsRedirection();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+            app.UseAuthorization();
             app.MapControllers();
-
             app.Run();
 
         }

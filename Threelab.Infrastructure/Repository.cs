@@ -81,6 +81,11 @@ namespace Threelab.Infrastructure
             }
         }
 
+        public async Task<T> GetOneByFilter(Expression<Func<T, bool>> filter = null)
+        {
+            return await Entities.Where(filter).FirstOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<T>> GetAsyncByFilter(Expression<Func<T, bool>> filter = null)
         {
             return await Entities.Where(filter).ToListAsync();

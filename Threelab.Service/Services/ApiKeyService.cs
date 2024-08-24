@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using Threelab.Domain.Abstracts;
 using Threelab.Domain.Entities;
 using Threelab.Domain.Interfaces;
@@ -35,7 +34,7 @@ namespace Threelab.Service.Services
 
         public async Task<ResultObject> GetOne(string key)
         {
-            var result = await _unitOfWork.Repository<ApiKey>().FindAsync(key);
+            var result = await _unitOfWork.Repository<ApiKey>().GetOneByFilter(c => c.Key == key);
             return new SuccessResult<ApiKey>(result, (int)HttpStatusCodes.OK);
         }
 

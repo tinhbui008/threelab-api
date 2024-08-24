@@ -8,7 +8,8 @@ namespace Threelab.Domain.Interfaces
         DbSet<T> Entities { get; }
         DbContext Context { get; }
         Task<IEnumerable<T>> GetAllAsync();
-        Task<T> GetAsyncByFilter(Expression<Func<T, bool>> filter = null);
+        Task<IEnumerable<T>> GetAsyncByFilter(Expression<Func<T, bool>> filter = null);
+        Task<T> GetOneByFilter(Expression<Func<T, bool>> filter = null);
         Task<T> FindAsync(params object[] keyValues);
         Task InsertAsync(T entity, bool saveChanges = true);
         Task InsertRangeAsync(IEnumerable<T> entities, bool saveChanges = true);

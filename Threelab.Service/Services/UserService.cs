@@ -1,6 +1,8 @@
+using Threelab.Domain.Abstracts;
 using Threelab.Domain.Entities;
 using Threelab.Domain.Interfaces;
 using Threelab.Domain.Interfaces.Services;
+using Threelab.Domain.Models.Error;
 
 namespace Threelab.Service.Services
 {
