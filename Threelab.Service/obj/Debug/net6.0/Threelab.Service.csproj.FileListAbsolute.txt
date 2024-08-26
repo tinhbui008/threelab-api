@@ -16,3 +16,5 @@ D:\DEV\.NET-Clean-Architecture\src\Threelab.Service\obj\Debug\net6.0\Threelab.Se
 D:\DEV\.NET-Clean-Architecture\src\Threelab.Service\obj\Debug\net6.0\refint\Threelab.Service.dll
 D:\DEV\.NET-Clean-Architecture\src\Threelab.Service\obj\Debug\net6.0\Threelab.Service.pdb
 D:\DEV\.NET-Clean-Architecture\src\Threelab.Service\obj\Debug\net6.0\ref\Threelab.Service.dll
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Service\bin\Debug\net6.0\Threelab.Application.dll
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Service\bin\Debug\net6.0\Threelab.Application.pdb

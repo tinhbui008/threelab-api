@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "CHjph7OpX+AbjbkVj0I0+SkdNUzuuLiglPqQi6bTRgomh2A8U/arekNYO16yFEaiJaHHQIMvkCqS8rCFEKaQsQ==",
+  "dgSpecHash": "PAXLWIJDlLVhclunMj613fGHwcrMA28+Gw36JL1VfDV5XHviWzA9n/ddv62K0FhcrVJUOaMOIK6Lq1rhVnPcEw==",
   "success": true,
   "projectFilePath": "D:\\DEV\\.NET-Clean-Architecture\\src\\Threelab.Infrastructure\\Threelab.Infrastructure.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\PC\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.server.abstractions.2.2.0.nupkg.sha512",

@@ -9,11 +9,10 @@ namespace Threelab.Domain.Entities
         public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string Avatar { get; set; }
-        public string[] Roles { get; set; } = new string[] { RolesEnum.USER.ToString() };
+        public string? Avatar { get; set; }
+        public string Roles { get; set; } = RolesEnum.USER.ToString();
         public bool Verify { get; set; } = false;
     }
-
 
     public enum RolesEnum
     {

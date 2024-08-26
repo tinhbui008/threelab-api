@@ -6,7 +6,7 @@ using Threelab.Domain.Models.Error;
 
 namespace Threelab.Service.Services
 {
-    public class UserService : IUser
+    public class UserService
     {
         private readonly IUnitOfWork _unitOfWork;
 

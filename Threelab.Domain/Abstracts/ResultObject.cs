@@ -6,34 +6,43 @@ using System.Threading.Tasks;
 
 namespace Threelab.Domain.Abstracts
 {
-    public abstract class ResultObject : Exception
+    public abstract class ResultObject
     {
-        public bool IsError { get; set; } = false;
+        public bool Success { get; set; } = true;
         public string Message { get; set; }
+        public int StatusCode { get; set; }
+        public ResultObject(string message, int status, bool success)
+        {
+            Message = message;
+            StatusCode = status;
+            Success = success;
+        }
     }
 
     public class SuccessResult<T> : ResultObject
     {
-        public T? Data { get; set; }
-        public int StatusCode { get; set; }
-
-        public SuccessResult(T? data, int statusCode, string message = "Successful")
+        public object Metadata { get; set; }
+        public SuccessResult(string message, int status, bool success, object data) : base(message, status, success)
         {
             Message = message;
-            Data = data;
-            StatusCode = statusCode;
+            StatusCode = status;
+            Metadata = data;
         }
     }
 
     public class FailedResult : ResultObject
     {
-        public int StatusCode { get; set; }
-
-        public FailedResult(string message, int statusCode)
+        public FailedResult(string message, int status, bool success) : base(message, status, success)
         {
-            IsError = true;
             Message = message;
-            StatusCode = statusCode;
+            StatusCode = status;
         }
     }
+
+    //public class ExceptionResult : ExceptionObject
+    //{
+    //    public ExceptionResult(string message, int status) : base(message, status)
+    //    {
+    //    }
+    //}
 }

@@ -5,7 +5,7 @@ namespace Threelab.Domain.Interfaces.Services
 {
     public interface IApiKey
     {
-        Task<ResultObject> GetOne(string key);
+        Task<ApiKey> GetOne(string key);
 
         Task<ResultObject> GenerateKey();
     }

@@ -36,7 +36,7 @@ namespace Threelab.API.User.Controllers
             })
             .ToArray();
 
-            return new SuccessResult<object>(data, (int)HttpStatusCodes.OK);
+            return new SuccessResult<object>("SUCCESS", (int)HttpStatusCodes.OK, true, new { Data = "hihi" });
             //return Ok(new FailedResult("ERRORRRR", (int)HttpStatusCodes.CONFLICT));
         }
 
@@ -44,7 +44,7 @@ namespace Threelab.API.User.Controllers
         public async Task<ResultObject> Post(ApiKey apiKey)
         {
             await _apiKeyService.GenerateKey();
-            return new SuccessResult<object>(apiKey, (int)HttpStatusCodes.OK);
+            return new SuccessResult<object>("SUCCESS", (int)HttpStatusCodes.OK, true, new { Data = "hihi" });
             //return Ok(new FailedResult("ERRORRRR", (int)HttpStatusCodes.CONFLICT));
         }
     }

@@ -9,8 +9,8 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddServices();
 builder.Services.AddDatabase(builder);
+builder.Services.AddServices();
 
 //App Run
 var app = builder.Build();

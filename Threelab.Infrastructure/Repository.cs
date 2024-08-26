@@ -56,10 +56,10 @@ namespace Threelab.Infrastructure
         public async Task InsertAsync(T entity, bool saveChanges = true)
         {
             await Entities.AddAsync(entity);
-            if (saveChanges)
-            {
-                await Context.SaveChangesAsync();
-            }
+            //if (saveChanges)
+            //{
+            //    await Context.SaveChangesAsync();
+            //}
         }
 
         public async Task InsertRangeAsync(IEnumerable<T> entities, bool saveChanges = true)

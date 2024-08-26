@@ -6,10 +6,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Threelab.Infrastructure.Data.Migrations
 {
-    /// <inheritdoc />
-    public partial class @int : Migration
+    public partial class iit : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -35,8 +33,8 @@ namespace Threelab.Infrastructure.Data.Migrations
                     Username = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
                     Password = table.Column<string>(type: "text", nullable: false),
-                    Avatar = table.Column<string>(type: "text", nullable: false),
-                    Roles = table.Column<string[]>(type: "text[]", nullable: false),
+                    Avatar = table.Column<string>(type: "text", nullable: true),
+                    Roles = table.Column<string>(type: "text", nullable: false),
                     Verify = table.Column<bool>(type: "boolean", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
@@ -47,7 +45,6 @@ namespace Threelab.Infrastructure.Data.Migrations
                 });
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

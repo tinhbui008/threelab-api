@@ -21,10 +21,22 @@
           "Microsoft.Extensions.DependencyInjection": "6.0.1",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.0",
+          "Threelab.Application": "1.0.0",
           "Threelab.Domain": "1.0.0"
         },
         "runtime": {
           "Threelab.Infrastructure.dll": {}
+        }
+      },
+      "AutoMapper/13.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Options": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/AutoMapper.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.0"
+          }
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -658,6 +670,15 @@
           }
         }
       },
+      "Threelab.Application/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Threelab.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Threelab.Application.dll": {}
+        }
+      },
       "Threelab.Domain/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "6.0.33",
@@ -674,6 +695,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AutoMapper/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/Fx1SbJ16qS7dU4i604Sle+U9VLX+WSNVJggk6MupKVkYvvBm4XqYaeFuf67diHefHKHs50uQIS2YEDFhPCakQ==",
+      "path": "automapper/13.0.1",
+      "hashPath": "automapper.13.0.1.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",
@@ -1080,6 +1108,11 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "Threelab.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Threelab.Domain/1.0.0": {
       "type": "project",

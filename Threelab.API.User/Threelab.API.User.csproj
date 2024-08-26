@@ -27,7 +27,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Threelab.Domain\Threelab.Domain.csproj" />
     <ProjectReference Include="..\Threelab.Infrastructure\Threelab.Infrastructure.csproj" />
-    <ProjectReference Include="..\Threelab.Service\Threelab.Service.csproj" />
   </ItemGroup>
 
 </Project>

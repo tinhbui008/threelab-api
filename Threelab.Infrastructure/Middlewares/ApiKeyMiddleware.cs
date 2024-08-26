@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using System;
 using System.Text.Json;
 using Threelab.Domain.Abstracts;
@@ -6,6 +8,7 @@ using Threelab.Domain.Entities;
 using Threelab.Domain.Interfaces;
 using Threelab.Domain.Interfaces.Services;
 using Threelab.Domain.Models.Error;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace Threelab.Infrastructure.Middlewares
 {
@@ -13,31 +16,41 @@ namespace Threelab.Infrastructure.Middlewares
     {
         private const string APIKEY = "x-api-key";
         private readonly RequestDelegate _next;
-        private readonly IApiKey _apiKey;
 
-        public ApiKeyMiddleware(RequestDelegate next, IApiKey apiKey)
+        public ApiKeyMiddleware(RequestDelegate next)
         {
             _next = next;
-            _apiKey = apiKey;
         }
 
-        public async Task Invoke(HttpContext httpContext)
+        public async Task Invoke(HttpContext httpContext, IServiceProvider serviceProvider)
         {
             if (!httpContext.Request.Headers.TryGetValue(APIKEY, out
                var extractedApiKey))
             {
-                var errObj = new FailedResult("API key null!!!", (int)HttpStatusCodes.UNAUTHORIZED);
-                await HandleExceptionAsync(httpContext, errObj);
+                var errObj = new FailedResult("API key null!!!", (int)HttpStatusCodes.UNAUTHORIZED, true);
+
+                await httpContext.Response.WriteAsync(JsonSerializer.Serialize(errObj));
             }
+            else
+            {
+                var apiKey = extractedApiKey;
 
-            await _next(httpContext);
-        }
+                using (var scope = serviceProvider.CreateScope())
+                {
+                    var apiKeyService = scope.ServiceProvider.GetRequiredService<IApiKey>();
+                    var apikey = await apiKeyService.GetOne(apiKey);
+                    var errObj = new FailedResult("API KEY IS INVALID!!!", (int)HttpStatusCodes.UNAUTHORIZED, true);
 
-        private static Task HandleExceptionAsync(HttpContext context, FailedResult failedResult)
-        {
-            var result = JsonSerializer.Serialize(failedResult);
-            context.Response.ContentType = "application/json";
-            return context.Response.WriteAsync(result);
+                    if (apikey is null)
+                    {
+                        await httpContext.Response.WriteAsync(JsonSerializer.Serialize(errObj));
+                    }
+                    else
+                    {
+                        await _next(httpContext);
+                    }
+                }
+            }
         }
     }
 }

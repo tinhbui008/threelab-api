@@ -16,3 +16,5 @@ D:\DEV\.NET-Clean-Architecture\src\Threelab.Infrastructure\obj\Debug\net6.0\refi
 D:\DEV\.NET-Clean-Architecture\src\Threelab.Infrastructure\obj\Debug\net6.0\Threelab.Infrastructure.pdb
 D:\DEV\.NET-Clean-Architecture\src\Threelab.Infrastructure\obj\Debug\net6.0\Threelab.Infrastructure.genruntimeconfig.cache
 D:\DEV\.NET-Clean-Architecture\src\Threelab.Infrastructure\obj\Debug\net6.0\ref\Threelab.Infrastructure.dll
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Infrastructure\bin\Debug\net6.0\Threelab.Application.dll
+D:\DEV\.NET-Clean-Architecture\src\Threelab.Infrastructure\bin\Debug\net6.0\Threelab.Application.pdb

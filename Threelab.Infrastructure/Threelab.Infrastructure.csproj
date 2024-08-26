@@ -30,12 +30,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Threelab.Application\Threelab.Application.csproj" />
     <ProjectReference Include="..\Threelab.Domain\Threelab.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "aox8YAKPCRQU2P1xIW7mFyJ9JQB0Ku2JxAEU8se6IeEmD+pyPXNEnNxDF4uMBVWitQS/DtBqjJPTT/LCC6VKJw==",
+  "dgSpecHash": "oJmm0xrIRTqcUMa3J+v5bQn83kkGbMvt9j5JG8L1VF6dLwCy3RVC/kjgsKEnGEs+yKf6lk7o+J8ZrQKpzUpLpA==",
   "success": true,
   "projectFilePath": "D:\\DEV\\.NET-Clean-Architecture\\src\\Threelab.Service\\Threelab.Service.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\PC\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.server.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",

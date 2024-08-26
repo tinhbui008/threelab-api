@@ -12,18 +12,14 @@ using Threelab.Infrastructure.Context;
 namespace Threelab.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20240823071913_int")]
-    partial class @int
+    [Migration("20240826103213_iit")]
+    partial class iit
     {
-        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
-                .HasAnnotation("Proxies:ChangeTracking", false)
-                .HasAnnotation("Proxies:CheckEquality", false)
-                .HasAnnotation("Proxies:LazyLoading", true)
+                .HasAnnotation("ProductVersion", "6.0.33")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -58,7 +54,6 @@ namespace Threelab.Infrastructure.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Avatar")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
@@ -72,9 +67,9 @@ namespace Threelab.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string[]>("Roles")
+                    b.Property<string>("Roles")
                         .IsRequired()
-                        .HasColumnType("text[]");
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");

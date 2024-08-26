@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "AutoMapper/13.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Options": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -1022,6 +1038,20 @@
           }
         }
       },
+      "Threelab.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Threelab.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Threelab.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Threelab.Application.dll": {}
+        }
+      },
       "Threelab.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1039,6 +1069,21 @@
     }
   },
   "libraries": {
+    "AutoMapper/13.0.1": {
+      "sha512": "/Fx1SbJ16qS7dU4i604Sle+U9VLX+WSNVJggk6MupKVkYvvBm4XqYaeFuf67diHefHKHs50uQIS2YEDFhPCakQ==",
+      "type": "package",
+      "path": "automapper/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "automapper.13.0.1.nupkg.sha512",
+        "automapper.nuspec",
+        "icon.png",
+        "lib/net6.0/AutoMapper.dll",
+        "lib/net6.0/AutoMapper.xml"
+      ]
+    },
     "Humanizer.Core/2.8.26": {
       "sha512": "OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "type": "package",
@@ -2502,6 +2547,11 @@
         "version.txt"
       ]
     },
+    "Threelab.Application/1.0.0": {
+      "type": "project",
+      "path": "../Threelab.Application/Threelab.Application.csproj",
+      "msbuildProject": "../Threelab.Application/Threelab.Application.csproj"
+    },
     "Threelab.Domain/1.0.0": {
       "type": "project",
       "path": "../Threelab.Domain/Threelab.Domain.csproj",
@@ -2523,6 +2573,7 @@
       "Microsoft.Extensions.DependencyInjection >= 6.0.1",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 6.0.0",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 6.0.0",
+      "Threelab.Application >= 1.0.0",
       "Threelab.Domain >= 1.0.0"
     ]
   },
@@ -2559,6 +2610,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "D:\\DEV\\.NET-Clean-Architecture\\src\\Threelab.Application\\Threelab.Application.csproj": {
+              "projectPath": "D:\\DEV\\.NET-Clean-Architecture\\src\\Threelab.Application\\Threelab.Application.csproj"
+            },
             "D:\\DEV\\.NET-Clean-Architecture\\src\\Threelab.Domain\\Threelab.Domain.csproj": {
               "projectPath": "D:\\DEV\\.NET-Clean-Architecture\\src\\Threelab.Domain\\Threelab.Domain.csproj"
             }

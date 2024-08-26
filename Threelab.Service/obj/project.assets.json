@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "AutoMapper/13.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Options": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Cors/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -977,6 +993,20 @@
           }
         }
       },
+      "Threelab.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Threelab.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Threelab.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Threelab.Application.dll": {}
+        }
+      },
       "Threelab.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1006,6 +1036,7 @@
           "Microsoft.Extensions.DependencyInjection": "6.0.1",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.0",
+          "Threelab.Application": "1.0.0",
           "Threelab.Domain": "1.0.0"
         },
         "compile": {
@@ -1018,6 +1049,21 @@
     }
   },
   "libraries": {
+    "AutoMapper/13.0.1": {
+      "sha512": "/Fx1SbJ16qS7dU4i604Sle+U9VLX+WSNVJggk6MupKVkYvvBm4XqYaeFuf67diHefHKHs50uQIS2YEDFhPCakQ==",
+      "type": "package",
+      "path": "automapper/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "automapper.13.0.1.nupkg.sha512",
+        "automapper.nuspec",
+        "icon.png",
+        "lib/net6.0/AutoMapper.dll",
+        "lib/net6.0/AutoMapper.xml"
+      ]
+    },
     "Microsoft.AspNetCore.Cors/2.2.0": {
       "sha512": "LFlTM3ThS3ZCILuKnjy8HyK9/IlDh3opogdbCVx6tMGyDzTQBgMPXLjGDLtMk5QmLDCcP3l1TO3z/+1viA8GUg==",
       "type": "package",
@@ -2424,6 +2470,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Threelab.Application/1.0.0": {
+      "type": "project",
+      "path": "../Threelab.Application/Threelab.Application.csproj",
+      "msbuildProject": "../Threelab.Application/Threelab.Application.csproj"
     },
     "Threelab.Domain/1.0.0": {
       "type": "project",
