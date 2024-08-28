@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Threelab.Application.Core.Abstractions;
 using Threelab.Domain.Abstracts;
 using Threelab.Domain.Entities;
 using Threelab.Domain.Interfaces;
+using Threelab.Domain.Interfaces.Services;
 using Threelab.Domain.Models;
 using Threelab.Domain.Models.Error;
 using Threelab.Domain.Requests;
@@ -21,33 +17,56 @@ namespace Threelab.Application.Core.Services
         private readonly IMapper _mapper;
         private readonly IPasswordHasher _passwordHasher;
         private readonly IJWT _jwt;
+        private readonly IKeyToken _keyToken;
 
-        public UserService(IUnitOfWork unitOfWork, IMapper mapper, IPasswordHasher passwordHasher, IJWT jwt)
+        public UserService(IUnitOfWork unitOfWork, IMapper mapper, IPasswordHasher passwordHasher, IJWT jwt, IKeyToken keyToken)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _passwordHasher = passwordHasher;
             _jwt = jwt;
+            _keyToken = keyToken;
         }
-        public async Task<SuccessResult<AccessResponse>> Add(RegisterRequest user)
+        public async Task<ResultObject> Add(RegisterRequest user)
         {
-            var hash = _passwordHasher.GeneratePassword(user.Password);
-
-            var userMap = _mapper.Map<User>(user);
-            userMap.Password = hash;
-            userMap.Username = userMap.Email;
-            await _unitOfWork.Repository<User>().InsertAsync(userMap);
-            await _unitOfWork.CommitTransaction();
-
-            var jwtModel = new JWTModel
+            try
             {
-                User = userMap
-            };
+                if (await _unitOfWork.Repository<User>().GetOneByFilter(c => c.Email == user.Email) != null)
+                    return new FailedResult("Account is already exist!!!", (int)HttpStatusCodes.BAD_REQUEST);
 
-            var tokens = _jwt.CreateToken(jwtModel);
-            var refreshToken = _jwt.GenerateRefreshToken();
+                var hash = _passwordHasher.GeneratePassword(user.Password);
+                var userMap = _mapper.Map<User>(user);
+                userMap.Password = hash;
+                userMap.Username = userMap.Email;
 
-            return new SuccessResult<AccessResponse>("Created Success", (int)HttpStatusCodes.CREATED, true, tokens);
+                await _unitOfWork.BeginTransaction();
+
+                await _unitOfWork.Repository<User>().InsertAsync(userMap);
+
+                var jwtModel = new JWTModel
+                {
+                    User = userMap
+                };
+
+                var tokens = _jwt.CreateToken(jwtModel);
+                tokens.RefreshToken = _jwt.GenerateRefreshToken();
+
+                await _keyToken.Create(new KeyToken
+                {
+                    RefreshToken = tokens.RefreshToken,
+                    UserId = userMap.Id
+                });
+
+
+                await _unitOfWork.CommitTransaction();
+
+                return new SuccessResult<AccessResponse>("Created Success", (int)HttpStatusCodes.CREATED, true, tokens);
+            }
+            catch (Exception ex)
+            {
+                await _unitOfWork.RollbackTransaction();
+                return new FailedResult(ex.Message, (int)HttpStatusCodes.FORBIDDEN);
+            }
         }
 
         public Task Delete(Guid userId)

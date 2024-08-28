@@ -32,6 +32,7 @@ namespace Threelab.API.Account.Extensions
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper(typeof(MappingConfig));
 
+            services.AddAuthorization();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -59,6 +60,7 @@ namespace Threelab.API.Account.Extensions
             services.AddScoped<IUser, UserService>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddScoped<IJWT, JWTService>();
+            services.AddScoped<IKeyToken, KeyTokenService>();
             return services;
         }
 

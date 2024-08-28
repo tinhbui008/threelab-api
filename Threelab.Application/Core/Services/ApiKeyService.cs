@@ -32,12 +32,12 @@ namespace Threelab.Service.Services
             return new SuccessResult<ApiKey>("SUCCESS", (int)HttpStatusCodes.OK, true, new { Data = "ahihi" });
         }
 
-        public async Task<ApiKey> GetOne(string key)
+        public async Task<ResultObject> GetOne(string key)
         {
             try
             {
                 var result = await _unitOfWork.Repository<ApiKey>().GetOneByFilter(c => c.Key == key);
-                return result;
+                return new SuccessResult<ApiKey>("", (int)HttpStatusCodes.OK, true, result);
             }
             catch
             {

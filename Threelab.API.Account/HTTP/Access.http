@@ -1,0 +1,28 @@
+﻿GET https://localhost:7085/api/access
+x-api-key: 74aec383bf5a8c4aae30a1204d7027c49eab280248fc7befe5ff316787dc5531
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjJkOGM5NzRhLTIxZWEtNDZhZC1iNWJlLWVkN2RhODBjNzg1ZCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImJraGFuaEBnbWFpbC5jb20iLCJleHAiOjE3MzI1MjY5ODYsImlzcyI6IlRocmVlbGFiIiwiYXVkIjoiVGhyZWVsYWIifQ.Jbb6F74_W8zBgYyYllIhJPRPQmvM0EXNQb0G48SNjak
+
+#####Create User
+POST https://localhost:7085/api/access/signup
+Content-Type: application/json
+x-api-key: 74aec383bf5a8c4aae30a1204d7027c49eab280248fc7befe5ff316787dc5531
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjJkOGM5NzRhLTIxZWEtNDZhZC1iNWJlLWVkN2RhODBjNzg1ZCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImJraGFuaEBnbWFpbC5jb20iLCJleHAiOjE3MzI1MjY5ODYsImlzcyI6IlRocmVlbGFiIiwiYXVkIjoiVGhyZWVsYWIifQ.Jbb6F74_W8zBgYyYllIhJPRPQmvM0EXNQb0G48SNjak
+
+{
+    "Email": "bkhanh@gmail.com",
+    "Password": "12345678",
+    "FullName": "TINH BUI"
+}
+
+
+#### Update
+PUT https://localhost:7085/api/access/update
+Content-Type: application/json
+x-api-key: 74aec383bf5a8c4aae30a1204d7027c49eab280248fc7befe5ff316787dc5531
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjJkOGM5NzRhLTIxZWEtNDZhZC1iNWJlLWVkN2RhODBjNzg1ZCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImJraGFuaEBnbWFpbC5jb20iLCJleHAiOjE3MzI1MjY5ODYsImlzcyI6IlRocmVlbGFiIiwiYXVkIjoiVGhyZWVsYWIifQ.Jbb6F74_W8zBgYyYllIhJPRPQmvM0EXNQb0G48SNjak
+
+{
+    "Email": "bkhanh@gmail.com",
+    "Password": "12345678",
+    "FullName": "TINH BUI"
+}

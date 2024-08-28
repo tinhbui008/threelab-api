@@ -11,18 +11,17 @@ namespace Threelab.Domain.Abstracts
         public bool Success { get; set; } = true;
         public string Message { get; set; }
         public int StatusCode { get; set; }
-        public ResultObject(string message, int status, bool success)
+        public ResultObject(string message, int status)
         {
             Message = message;
             StatusCode = status;
-            Success = success;
         }
     }
 
     public class SuccessResult<T> : ResultObject
     {
         public object Metadata { get; set; }
-        public SuccessResult(string message, int status, bool success, object data) : base(message, status, success)
+        public SuccessResult(string? message, int status, bool success, object data) : base(message, status)
         {
             Message = message;
             StatusCode = status;
@@ -32,17 +31,10 @@ namespace Threelab.Domain.Abstracts
 
     public class FailedResult : ResultObject
     {
-        public FailedResult(string message, int status, bool success) : base(message, status, success)
+        public FailedResult(string message, int status) : base(message, status)
         {
             Message = message;
             StatusCode = status;
         }
     }
-
-    //public class ExceptionResult : ExceptionObject
-    //{
-    //    public ExceptionResult(string message, int status) : base(message, status)
-    //    {
-    //    }
-    //}
 }

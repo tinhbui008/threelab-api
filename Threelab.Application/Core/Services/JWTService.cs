@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -27,6 +28,35 @@ namespace Threelab.Application.Core.Services
         {
             _mapper = mapper;
             _configuration = configuration;
+        }
+
+
+        public bool ValidateToken(string token, string issuer, string audience, ICollection<SecurityKey> signingKeys, out JwtSecurityToken jwt)
+        {
+            var validationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidIssuer = issuer,
+                ValidateAudience = true,
+                ValidAudience = audience,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKeys = signingKeys,
+                ValidateLifetime = true
+            };
+
+            try
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
+                jwt = (JwtSecurityToken)validatedToken;
+
+                return true;
+            }
+            catch (SecurityTokenValidationException ex)
+            {
+                jwt = null;
+                return false;
+            }
         }
 
         public AccessResponse CreateToken(JWTModel jwtModel)
